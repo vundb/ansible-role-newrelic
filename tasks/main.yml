@@ -1,0 +1,27 @@
+---
+
+# fail when distribution is not supported
+
+- name: check if distribution is supported
+  fail: msg="'{{ ansible_distribution }}' is not supported by this role"
+  when: ansible_distribution not in ["Gentoo"]
+
+
+# run os specific tasks
+
+- include: gentoo/main.yml
+  when: ansible_distribution == "Gentoo"
+
+
+# configure newrelic
+
+- name: insert newrelic key
+  become: yes
+  shell: nrsysmond-config --set license_key={{ newrelic_license }}
+
+
+# ensure service is running
+
+- name: ensure service is running
+  become: yes
+  service: name="newrelic-sysmond" state="started" enabled=yes

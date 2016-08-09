@@ -1,0 +1,13 @@
+---
+
+# write package config and install required packages
+
+- include: ../../../portage/tasks/gentoo/main.yml
+  vars:
+    portage_configuration:
+      - section: "package.accept_keywords"
+        file: "sys-apps-newrelic-sysmond"
+        entries:
+          - "sys-apps/newrelic-sysmond ~amd64"
+    portage_packages:
+      - { package: "sys-apps/newrelic-sysmond" }
