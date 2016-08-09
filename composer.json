@@ -1,5 +1,5 @@
 {
-  "name": "vundb/ansible-role-newewlic",
+  "name": "vundb/ansible-role-newrelic",
   "description": "Ansible role to install and configure newrelic on gentoo instances.",
   "license": "MIT",
   "type": "chef-role",
